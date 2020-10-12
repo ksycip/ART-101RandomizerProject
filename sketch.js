@@ -1,3 +1,4 @@
+'use strict'
 let words = [{
     quote: 'Great people are those who make others feel that they, too, can become great. - Mark Twain'
   },
@@ -56,8 +57,8 @@ function setup() {
 
   background(242, 225, 215);
 
-  button = createButton("button");
-  button.position(625, 323);
+  button = createButton("me");
+  button.position(615, 312);
   button.mousePressed(buttonPressed);
 
   setTimeout(randomizer, 1000);
@@ -74,7 +75,7 @@ function draw() {
 
   textSize(18);
   fill(37, 38, 77);
-  text("(click      for a better mood)", 385, 80);
+  text("(click    for a better mood)", 385, 80);
 
 }
 //new stuff here

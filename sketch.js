@@ -80,10 +80,10 @@ function draw() {
    for (let i = 0; i < quoteShuffledArray.length; i++) {
      quoteShuffled = quoteShuffled + quoteShuffledArray[i];
    }
-   text(quoteShuffled, 35, 150);
+   text(quoteShuffled, 30, 150);
 
  } else {
-   text(quote, 35, 150);
+   text(quote, 30, 150);
  }
 
  textSize(30);
@@ -103,6 +103,7 @@ function draw() {
 function randomizer() {
   animating = false;
   textSize(15);
+  
 
   if (words[0]) {
 

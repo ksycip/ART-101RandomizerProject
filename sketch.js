@@ -43,7 +43,7 @@ let words = [{
 let randomIndex;
 let button;
 let animating = false;
-
+let quote = 'The power of imagination makes us infinite. - John Muir';
 
 function setup() {
   //bg = loadImage('assets/goodthings.jpg');
@@ -58,24 +58,45 @@ function setup() {
   background(242, 225, 215);
 
   button = createButton("me");
-  button.position(615, 312);
+  button.position(x + 456, y + 66);
   button.mousePressed(buttonPressed);
-
-  setTimeout(randomizer, 1000);
 
 }
 
 
 function draw() {
 
-  textSize(30);
-  textFont('Courier');
-  textStyle(NORMAL);
-  text("~ ready, set, QUOTE! ~", 350, 50);
+  background(242, 225, 215);
 
-  textSize(18);
-  fill(37, 38, 77);
-  text("(click    for a better mood)", 385, 80);
+ if (animating) {
+
+   let shuffled = shuffle(['~', ' ', 'r', 'e', 'a', 'd', 'y', ',', ' ', 's', 'e', 't', ',', ' ', 'Q', 'U', 'O', 'T', 'E', '!', ' ', '~']);
+
+   let quoteSplit = quote.split(''); // empty string separator
+   let quoteShuffledArray = shuffle(quoteSplit);
+
+   let quoteShuffled = '';
+
+   for (let i = 0; i < quoteShuffledArray.length; i++) {
+     quoteShuffled = quoteShuffled + quoteShuffledArray[i];
+   }
+   text(quoteShuffled, 70, 150);
+
+ } else {
+   text(quote, 70, 150);
+ }
+
+ textSize(30);
+ textFont('Courier');
+ textStyle(NORMAL);
+ text("~ ready, set, QUOTE! ~", 350, 50);
+
+
+
+ textSize(18);
+ fill(37, 38, 77);
+ text("(click    for a better mood)", 385, 80);
+
 
 }
 //new stuff here
@@ -85,16 +106,11 @@ function randomizer() {
 
   if (words[0]) {
 
-    background(242, 225, 215);
-
     randomIndex = int(random(words.length));
-    text(`${words[randomIndex].quote}, ${words[randomIndex].quote}`, 70, 150);
+    quote = `${words[randomIndex].quote}`;
 
     words.splice(randomIndex, 1);
 
-  } else {
-    background(242, 225, 215);
-    // text("no new quotes", 70, 150);
   }
 
 }
@@ -113,7 +129,7 @@ function buttonPressed() {
   //
   // textStyle(BOLD);
 
-  background(242, 225, 215);
+  //background(242, 225, 215);
   animating = true;
   setTimeout(randomizer, 1000);
 
